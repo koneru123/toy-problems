@@ -15,11 +15,46 @@
 *
 * Example:
 * rockPaperScissors(5); // => ['RRRRR', 'RRRRP', 'RRRRS', etc...]
+* rockPaperScissors(5); // => ['RRRRR', 'RRRRP', 'RRRRS', 'RRRRR', 'RRRRP'];
+* rockPaperScissors(3); // => ['RRR', 'RRP', 'RRS'];
 *
 */
 
-var rockPaperScissors = function (
-) {
-  // TODO: your solution here
+/* var generateWord = function(str) {
+  let str1 = str;
+  let arr1 = str.split('');
+
+  //for(let i = 0; i < arr1.length; i++) {
+    console.log(arr1[arr1.length - 1]);
+    if(arr1[arr1.length - 1] !== 'P') {
+      arr1[arr1.length - 1] === 'P';
+    }
+  //}
+  str1 = arr1.join('');
+  return str1;
+} */
+
+//console.log(replaceLastWord('RRS'));
+
+var rockPaperScissors = function (val) {
+  let resultArr = [];
+  let arr1 = [];
+
+  let characters = ['RRRRR', 'RRRRP', 'RRRRS', 'RRRRR', 'RRRRP'];
+
+  if(val <= 0) {
+    return [];
+  }
+
+  for(let i = 0; i < characters.length; i++) {
+    let val1 = characters[Math.floor(Math.random() * characters.length)]
+    arr1.push(val1);
+    resultArr.push(arr1);
+  }
+  return resultArr;
 };
+
+console.log(rockPaperScissors(5));
+
+
 

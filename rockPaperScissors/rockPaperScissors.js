@@ -36,25 +36,27 @@
 
 //console.log(replaceLastWord('RRS'));
 
-var rockPaperScissors = function (val) {
+var rockPaperScissors = function(n) {
   let resultArr = [];
-  let arr1 = [];
+  let charactersArr = ['R', 'P', 'S'];
 
-  let characters = ['RRRRR', 'RRRRP', 'RRRRS', 'RRRRR', 'RRRRP'];
+  var rockPaperScissorsCombinations = function(str, n) {
+    //console.log(arguments);
+    //console.log(n);
+    if(n === 0) {
+      resultArr.push(str);
+      return;
+    }
+    for(let i = 0; i < charactersArr.length; i++) {
+      rockPaperScissorsCombinations(str + charactersArr[i], n-1);
+    }
+  };
 
-  if(val <= 0) {
-    return [];
-  }
-
-  for(let i = 0; i < characters.length; i++) {
-    let val1 = characters[Math.floor(Math.random() * characters.length)]
-    arr1.push(val1);
-    resultArr.push(arr1);
-  }
+  rockPaperScissorsCombinations('', n);
   return resultArr;
-};
+}
 
-console.log(rockPaperScissors(5));
+console.log(rockPaperScissors(3));
 
 
 

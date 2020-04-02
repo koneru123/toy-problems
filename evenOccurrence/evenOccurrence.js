@@ -26,12 +26,15 @@ var evenOccurrence = function(arr) {
   //console.log(set);
   //console.log(newArr);
   for(let i = 0; i < newArr.length-1; i++) {
-    if(newArr[i] % 2 === 0) {
+    if(typeof newArr[i] === 'number' && newArr[i] % 2 === 0) {
       counter += 1;
+    } else if(typeof newArr[i] === 'string') {
+      counter = newArr[0];
     }
   }
   return counter;
 };
 
 var onlyEven = [1, 7, 2, 4, 5, 6, 8, 9, 6, 4];
+//var onlyEven1 = ['cat', 'dog', 'dig', 'cat'];
 console.log(evenOccurrence(onlyEven));

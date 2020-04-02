@@ -20,43 +20,30 @@
 *
 */
 
-/* var generateWord = function(str) {
-  let str1 = str;
-  let arr1 = str.split('');
-
-  //for(let i = 0; i < arr1.length; i++) {
-    console.log(arr1[arr1.length - 1]);
-    if(arr1[arr1.length - 1] !== 'P') {
-      arr1[arr1.length - 1] === 'P';
-    }
-  //}
-  str1 = arr1.join('');
-  return str1;
-} */
-
-//console.log(replaceLastWord('RRS'));
-
 var rockPaperScissors = function(n) {
-  let resultArr = [];
-  let charactersArr = ['R', 'P', 'S'];
 
-  var rockPaperScissorsCombinations = function(str, n) {
-    //console.log(arguments);
-    //console.log(n);
-    if(n === 0) {
+  let resultArr = [];
+  let characters = ['R', 'P', 'S'];
+
+  let rockPaperScissorsCombination = function(str, n) {
+    if(n <= 0) {
       resultArr.push(str);
       return;
     }
-    for(let i = 0; i < charactersArr.length; i++) {
-      rockPaperScissorsCombinations(str + charactersArr[i], n-1);
+    for(let i = 0; i < characters.length; i++) {
+      rockPaperScissorsCombination(str + characters[i], n-1);
     }
-  };
+    /* characters.forEach(element => {
+      rockPaperScissorsCombination(str + element, n-1);
+    }); */
+  }
 
-  rockPaperScissorsCombinations('', n);
+  rockPaperScissorsCombination('', n);
+
   return resultArr;
 }
 
-console.log(rockPaperScissors(3));
+console.log(rockPaperScissors(2));
 
 
 

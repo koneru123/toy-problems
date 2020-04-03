@@ -25,21 +25,46 @@ var makeHashTable = function() {
   var storage = [];
   var storageLimit = 4;
   var size = 0;
-  
-  result.insert = function(/*...*/ 
-) {
+
+  // input is the key and value, in our case it is string
+  // output, should insert into the hash table
+
+  result.insert = function(key, value) {
     // TODO: implement `insert`
+    var idx = getIndexBelowMaxForKey(key, storageLimit);
+   //console.log(idx);
+    if(!storage[idx]) {
+      var obj = {};
+      obj[key] = value;
+      size++;
+    } else {
+      obj[idx][key] = value;
+      size++;
+    }
+    storage.push(obj);
+    //console.log(storage);
   };
 
-  result.retrieve = function(/*...*/ 
-) {
+  result.retrieve = function(key) {
     // TODO: implement `retrieve`
+    var idx = getIndexBelowMaxForKey(key, storageLimit);
+    //console.log(storage[idx-1][key]);
+    var value = storage[idx-1][key] ? storage[idx-1][key] : undefined;
+    return value;
   };
 
-  result.remove = function(/*...*/ 
-) {
+  result.remove = function(key) {
     // TODO: implement `remove`
+    var idx = getIndexBelowMaxForKey(key, storageLimit);
+    delete storage[idx-1][key];
+    //console.log(storage);
   };
-
   return result;
 };
+
+var hashTable1 = makeHashTable();
+hashTable1.insert('priya', 'koneru');
+hashTable1.insert('priya1', 'koneru1');
+hashTable1.insert('priya2', 'koneru2');
+hashTable1.retrieve('priya1');
+hashTable1.remove('priya2');

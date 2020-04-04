@@ -31,7 +31,7 @@
     if(this.storage1length === 0) {
       this.storage1[this.storage1length] = value;
       this.storage1length++;
-    } else if(value < this.storage1[this.storage1length-1]) {
+    } else if(value <= this.storage1[this.storage1length-1]) {
       this.storage1[this.storage1length] = value;
       this.storage1length++;
     }
@@ -44,7 +44,7 @@
       var poppedElement = this.storage[this.storagelength - 1];
       delete this.storage[this.storagelength-1];
       this.storagelength--;
-      if(poppedElement === this.storage1[this.storage1length]) {
+      if(poppedElement === this.storage1[this.storage1length - 1]) {
         delete this.storage1[this.storage1length - 1];
         this.storage1length--
       }
@@ -64,14 +64,14 @@
 };
 
 var example = new Stack()
-example.push(4)
-example.push(3)
-example.push(2)
-example.push(5)
-example.pop(2)
-example.size()
-console.log(example.min()) // 2
-example.push(3)
-example.push(2)
-example.push(1)
-console.log(example.min()) // 1
+example.push(200);
+console.log(example.min())// 200
+example.push(100);
+console.log(example.min())// 100
+example.pop();
+console.log(example.min())// 200
+example.push(50);
+example.push(50);
+console.log(example.min())// 50
+example.pop();
+console.log(example.min())// 50

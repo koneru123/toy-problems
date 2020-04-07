@@ -40,7 +40,7 @@
 // 2. what if array length is zero
 // 3. what if we have same elements in the array ?
 // 4. what incase if the array has negative number?
-// Time complexity:- O(n)
+// Time complexity:- O(n^2)
 
 var bubbleSort = function(array) {
   if(array.length === 0) {

@@ -32,7 +32,35 @@
 
 // Feel free to add helper functions if needed.
 
+// Basic implementation
+// I: array, consider an array of numbers
+// O: return the sorted input array
+// edgecases,
+// 1. what if there are two same numbers in the array?
+// 2. what if array length is zero
+// 3. what if we have same elements in the array ?
+// 4. what incase if the array has negative number?
+// Time complexity:- O(n)
 
 var bubbleSort = function(array) {
-  // Your code here.
-};
+  if(array.length === 0) {
+    return [];
+  }
+  for(let i = 0; i < array.length; i++) {
+    for(let j = 0; j < array.length; j++) {
+      if(array[j] > array[j+1]) {
+        temp = array[j];
+        array[j] = array[j+1];
+        array[j+1] = temp;
+      }
+    }
+  }
+  return array;
+}
+
+//var array = [2, 1, 3];
+//var array1 = [20,30,40,90,50,60,70,80,100,110];
+//var array2 = [];
+//var array3 = [2, 2, 1, 1, 3, 3, 0, 0];
+var array4 = [45, 101, 123, 453, 543, 3324, -10, 12, 33, 45, 123, 555422, 33];;
+console.log(bubbleSort(array4));

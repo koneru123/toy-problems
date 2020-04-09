@@ -71,15 +71,15 @@ var insertionSort = function(array) {
   let objArr = [];
   let newSortedArr = [];
   let newSortedObj = {};
-  for(let i = 0; i < array.length; i++) {
+  /* for(let i = 0; i < array.length; i++) {
     if(typeof array[i] === 'object') {
       for(let [key, value] of Object.entries(array[i])) {
         objArr.push(value);
       }
     }
-  }
+  } */
   //console.log(objArr);
-  objArr = sortArray(objArr).slice();
+  objArr = sortArray(array).slice();
 
   for(let j = 0; j < objArr.length; j++) {
     newSortedArr.push({value: objArr[j], i: j});
@@ -88,6 +88,6 @@ var insertionSort = function(array) {
   return newSortedArr;
 };
 
-console.log(insertionSort([{value: 2}, {value: 1}, {value: 3}, {value: 5}, {value: 4}])); //[{value: 1}, {value: 2}, {value: 3}, {value: 4}, {value: 5}]
+console.log(insertionSort([3, 2, 1, 7, 5])); //[{value: 1}, {value: 2}, {value: 3}, {value: 4}, {value: 5}]
 
 //console.log(sortArray([2, 1, 3, 5, 7])); //[1, 2, 3]

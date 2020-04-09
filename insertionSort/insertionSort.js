@@ -37,7 +37,7 @@
 // It will transform an array of numbers into an array of valid objects.
 var testingTransform = function(array) {
   var transform = [];
-  
+
   for (var i = 0; i < array.length; i++) {
     transform.push({value: array[i], i: i});
   }
@@ -45,8 +45,49 @@ var testingTransform = function(array) {
   return transform;
 };
 
-var insertionSort = function(array
-) {
+var sortArray = function(array) {
+  var leftArr = [];
+  var rightArr = [];
+  var newArray = [];
+  var pivot = array[array.length - 1]
+  if(array.length === 0) {
+    return [];
+  }
+  for(let i = 0; i < array.length-1; i++) {
+    if(array[i] < pivot) {
+      leftArr.push(array[i]);
+    } else {
+      rightArr.push(array[i]);
+    }
+  }
+  // recursive implementation
+  // uses the rest operator
+  newArray = newArray.concat(...sortArray(leftArr), pivot , ...sortArray(rightArr));
+  return newArray;
+}
+
+var insertionSort = function(array) {
   // Your code goes here. Feel free to add helper functions if needed.
-  return array;
+  let objArr = [];
+  let newSortedArr = [];
+  let newSortedObj = {};
+  for(let i = 0; i < array.length; i++) {
+    if(typeof array[i] === 'object') {
+      for(let [key, value] of Object.entries(array[i])) {
+        objArr.push(value);
+      }
+    }
+  }
+  //console.log(objArr);
+  objArr = sortArray(objArr).slice();
+
+  for(let j = 0; j < objArr.length; j++) {
+    newSortedArr.push({value: objArr[j]});
+  }
+
+  return newSortedArr;
 };
+
+console.log(insertionSort([{value: 2}, {value: 1}, {value: 3}, {value: 5}, {value: 4}])); //[{value: 1}, {value: 2}, {value: 3}, {value: 4}, {value: 5}]
+
+//console.log(sortArray([2, 1, 3, 5, 7])); //[1, 2, 3]

@@ -82,7 +82,7 @@ var insertionSort = function(array) {
   objArr = sortArray(objArr).slice();
 
   for(let j = 0; j < objArr.length; j++) {
-    newSortedArr.push({value: objArr[j]});
+    newSortedArr.push({value: objArr[j], i: j});
   }
 
   return newSortedArr;

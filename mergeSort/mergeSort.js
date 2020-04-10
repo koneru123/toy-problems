@@ -96,7 +96,41 @@
  */
 
 
-
+//I : array
+//0 : Sorted array
+//Edgecases:
+// 1. if array is an empty array or has length of 1, then return the array
+// 2. if array has negative numbers sort them
+// 3. if array has repeting numbers then sort them in order and arrange them
 var mergeSort = function(array) {
-  // Your code here.
+  //if array is an empty array or has length of 1, then return the array
+  if(array.length === 0 || array.length === 1) {
+    return array
+  }
+  var array1 = array.slice();
+  for(var i = 0; i < array1.length; i++) {
+    array1[i] = [array1[i]];
+  }
+  //console.log(array1);
+  for(var j = 0; j < array1.length; j++) {
+    for(var k = 0; k < array1.length; k++) {
+      if(array1[k] > array1[k+1]) {
+        var temp = array1[k];
+        array1[k] = array1[k+1];
+        array1[k+1] = temp;
+      }
+    }
+  }
+  //console.log(array1);
+  for(var l = 0; l < array1.length; l++) {
+    array[l] = array1[l][0];
+  }
+  //console.log(array);
+  return array;
 };
+
+//let array1 = [2, 5, 1, 3, 7, 2, 3, 8, 6, 3];
+//let arr = [1, 5, 3, 9, 6, 4, 8];
+//let array2 = [];
+//let array3 = [3, 4, 6, -10, 3, 4, 6, -40, 3, 4]
+//console.log(mergeSort(array3));

@@ -127,6 +127,7 @@ var mergeSort = function(array) {
   }
   //console.log(array);
   return array;
+
 };
 
 //let array1 = [2, 5, 1, 3, 7, 2, 3, 8, 6, 3];

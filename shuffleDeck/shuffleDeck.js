@@ -33,7 +33,7 @@
 
 var shuffleDeck = function(deck) {
   for(let i = 0; i < deck.length; i++) {
-    var j = Math.floor(Math.random() * i);
+    var j = Math.floor(Math.random() * deck.length);
     temp = deck[i];
     deck[j] = deck[i];
     deck[i] = temp;
@@ -58,4 +58,4 @@ var orderedDeck = function() {
 };
 
 //console.log(orderedDeck());
-//console.log(shuffleDeck(orderedDeck()));
+console.log(shuffleDeck(orderedDeck()));

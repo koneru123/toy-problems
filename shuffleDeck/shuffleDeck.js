@@ -58,4 +58,4 @@ var orderedDeck = function() {
 };
 
 //console.log(orderedDeck());
-console.log(shuffleDeck(orderedDeck()));
+//console.log(shuffleDeck(orderedDeck()));

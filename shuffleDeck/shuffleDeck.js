@@ -32,7 +32,7 @@
  */
 
 var shuffleDeck = function(deck) {
-  for(let i = 0; i < deck.length-1; i++) {
+  for(let i = 0; i <= deck.length-1; i++) {
     var j = Math.floor(Math.random() * deck.length-1);
     temp = deck[i];
     deck[j] = deck[i];

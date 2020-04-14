@@ -19,12 +19,12 @@ edgecases:-
 
 var firstNonRepeatedCharacter = function(string) {
   // TODO: your solution here
+  if(string.length === 0) {
+    return null;
+  }
   let set = new Set(string.split(''));
   let newArr = Array.from(set);
-  //console.log(newArr);
-  if(string.length === 0) {
-    return '';
-  }
+
   let resultObj = {};
   for(let i = 0; i < string.length; i++) {
     if(!resultObj.hasOwnProperty(string[i])) {
@@ -34,20 +34,22 @@ var firstNonRepeatedCharacter = function(string) {
     }
   }
 
+  //console.log(newArr);
   //console.log(resultObj);
-  //let nonRepeatingChar;
-  for(let j = 0; j < newArr.length; j++) {
-    if(resultObj[newArr[j+1]] < resultObj[newArr[j]]) {
-      var nonRepeatingChar = newArr[j+1];
+
+  let nonRepeatingChar = null;
+  for(let j = 0; j < newArr.length-1; j++) {
+    if((resultObj[newArr[j+1]] !== 2) && resultObj[newArr[j+1]] < resultObj[newArr[j]]) {
+      nonRepeatingChar = newArr[j+1];
       return nonRepeatingChar;
     }
   }
-  return '';
+  return nonRepeatingChar;
 };
 
 const string = 'ABA';
 const string1 = 'AACBDB';
 const string2 = 'AABBCC';
 const string3 = '';
-const string4 = 'AAAACX'
-console.log(firstNonRepeatedCharacter(string4));
+const string4 = 'AABCABD' //c
+console.log(firstNonRepeatedCharacter('AAAACX'));

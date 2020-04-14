@@ -19,6 +19,9 @@ edgecases:-
 
 var firstNonRepeatedCharacter = function(string) {
   // TODO: your solution here
+  let set = new Set(string.split(''));
+  let newArr = Array.from(set);
+  //console.log(newArr);
   if(string.length === 0) {
     return '';
   }
@@ -30,18 +33,21 @@ var firstNonRepeatedCharacter = function(string) {
       resultObj[string[i]] += 1;
     }
   }
-  let nonRepeatingChar = 'no first non repeated character found';
-  for(let j = 0; j < string.length; j++) {
-    if(resultObj[string[j]] < resultObj[string[j+1]]) {
-      nonRepeatingChar = string[j];
+
+  //console.log(resultObj);
+  //let nonRepeatingChar;
+  for(let j = 0; j < newArr.length; j++) {
+    if(resultObj[newArr[j+1]] < resultObj[newArr[j]]) {
+      var nonRepeatingChar = newArr[j+1];
       return nonRepeatingChar;
     }
   }
-  return nonRepeatingChar;
+  return '';
 };
 
 const string = 'ABA';
 const string1 = 'AACBDB';
 const string2 = 'AABBCC';
 const string3 = '';
-console.log(firstNonRepeatedCharacter(string2));
+const string4 = 'AAAACX'
+console.log(firstNonRepeatedCharacter(string4));

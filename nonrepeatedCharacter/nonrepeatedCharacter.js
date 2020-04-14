@@ -34,9 +34,6 @@ var firstNonRepeatedCharacter = function(string) {
     }
   }
 
-  //console.log(newArr);
-  //console.log(resultObj);
-
   let nonRepeatingChar = null;
   for(let j = 0; j < newArr.length-1; j++) {
     if((resultObj[newArr[j+1]] !== 2) && resultObj[newArr[j+1]] < resultObj[newArr[j]]) {

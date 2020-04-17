@@ -25,7 +25,27 @@ makeChange(2) === 2
 */
 
 var makeChange = function(total) {
-
+    let totalCombinations = 0;
+    let pieces = [1, 2, 5, 10, 20, 50, 100, 200];
+    
+    function findCombos(index, total) {
+        var currentCoin = pieces[index];
+        if(index === 0) {
+            total % currentCoin  === 0 && totalCombinations++;
+            return;
+        }
+        while(total >= 0) {
+            findCombos(index-1, total);
+            total -= currentCoin;
+        }
+    }
+    findCombos(pieces.length - 1, total);
+    return totalCombinations;
 };
+
+console.log(makeChange(3));
+
+
+
 
 

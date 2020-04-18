@@ -18,4 +18,17 @@
  */
 
 var powerSet = function(str) {
+    let finalArr = [''];
+    for(let i = 0; i < str.length; i++) {
+        finalArr.push(str[i]);   
+        for(j = i+1; j < str.length; j++) {
+            finalArr.push(str[i] + str[j]);
+        }
+        powerSet(str.slice(i+1));
+    }
+    finalArr.push(str);
+    return finalArr;
 };
+
+//console.log(powerSet('abc'));
+console.log(powerSet('jump'));

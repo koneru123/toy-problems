@@ -13,21 +13,23 @@
 var binarySearch = function (array, target) { 
     let start = 0; 
     let end = array.length - 1; 
-    while(start < end) {
-        let middleValue = Math.floor((start+end)/2); 
-        if(target === array[middleValue]) {
-            return middleValue;
-        }
-        else if(target < array[middleValue]) { 
-            end = middleValue;
-        }
-        else if(target > array[middleValue]){ 
-            start = middleValue; 
+    var currentIndex;
+    var currentElement;
+
+    while(start <= end) {
+        currentIndex = Math.floor((start+end)/2); 
+        currentElement = array[currentIndex];
+
+        if(currentElement < target) { 
+            start = currentIndex + 1;
+        } else if(currentElement > target){ 
+            end = currentIndex - 1; 
         } else {
-            return null;
+            return currentIndex;
         }
     }
+    return null;
 };
 
-//console.log(binarySearch([1, 2, 3, 4, 5], 4));
-console.log(binarySearch([1, 2, 3, 4, 5], 8));
+console.log(binarySearch([1, 2, 3, 4, 5], 4));
+//console.log(binarySearch([1, 2, 3, 4, 5], 8));

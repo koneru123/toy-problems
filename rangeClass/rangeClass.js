@@ -40,16 +40,43 @@
 
 
 var Range = function(start, end, step) {
+    this.start = start || 0;
+    this.end = end || start;
+    this.step = step || 1;    
 };
 
 Range.prototype.size = function () {
+   const sizeArr = [];
+   for(let i = this.start; i <= this.end; i = i+2) {
+     sizeArr.push(i); 
+   }
+   //console.log(sizeArr);
+   return sizeArr.length;
 };
 
 Range.prototype.each = function (callback) {
+    
 };
 
 Range.prototype.includes = function (val) {
+    if((this.start <= val && this.end >= val) && (val - this.start)%this.step === 0) {
+        return true;
+    } else {
+        return false;
+    }
 };
 
-var range = new Range(1);
+//var range = new Range(1);
+
+var myRange = new Range(0,10); // a new range representing the numbers between 0 and 10 (inclusively)
+
+var evenNumbers = new Range(2,8,2); // A range with the even numbers 2, 4, 6, and 8.
+evenNumbers.each(function(val){
+   console.log(val+"!");
+ });
+
+//console.log(evenNumbers);
+console.log(evenNumbers.size()); //should be 4
+console.log(evenNumbers.includes(2)); //should be true, 
+console.log(evenNumbers.includes(3)); //should be false
 

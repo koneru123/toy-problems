@@ -30,22 +30,49 @@
  * You will need a doubly-linked list (provided).
  */
 
+// this class has limit argument
+// returns the limit 
 var LRUCache = function (limit) {
+  this.limit = limit;
+  this.cache = {};
 };
 
+// this is an other class with 2 values
+// this has 2 arguments value and key
 var LRUCacheItem = function (val, key) {
+  return this.cache[key];
 };
 
+// should return the size 
 LRUCache.prototype.size = function () {
+  return Object.keys(this.cache).length;
 };
 
+// should return the value based on key
 LRUCache.prototype.get = function (key) {
+  return this.cache[key];
 };
 
+// should set the value based on key
 LRUCache.prototype.set = function (key, val) {
+  if(this.size() === this.limit) {
+    console.log('we reached the limit');
+  } else {
+    this.cache[key] = val;
+  }
 };
 
+var cache = new LRUCache(2); // limit of 3 items
+cache.set("item1", 1);
+cache.set("item2", 2);
 
+console.log(cache.get("item1")); //=> 1
+console.log(cache.set("item3", 3)); //=> out of capacity
+// item1 was removed because it was the oldest item by insertion/usage
+
+// item4 is removed to make room, because it is the oldest by usage,
+// which takes priority.
+//cache.set("item5", 5);
 
 var List = function () {
   this.head = null;
